@@ -1,0 +1,131 @@
+---
+title: "How COVID-19 pandemic changed emotions"
+description: |
+site: distill::distill_website
+---
+
+### A survey measured people's feelings, on 7 different emotions, during the COVID-19 pandemic in the U.S. How did people's feelings change during different periods of time?
+
+## Details to help you to understand the graphs
++ Week 1: mid-November, 2019 
++ Purple line 1: Week 20 -- The beginning of the lockdown
++ Purple line 2: Week 30 -- The end of the lockdown
++ Red line: Peak of COVID deaths
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(ggthemes)
+library(ggplot2)
+library(tidyverse)
+library(dplyr)
+emotion_data_v2 <- read_csv("emotion data v2.csv")
+```
+
+## Sadness
+```{r}
+emotion_data_v2$emotions_yesterday_1[emotion_data_v2$emotions_yesterday_1 == 2]<-0 
+   emotion_data_v2$emotions_yesterday_2[emotion_data_v2$emotions_yesterday_2 == 2]<-0
+   emotion_data_v2$emotions_yesterday_3[emotion_data_v2$emotions_yesterday_3 == 2]<-0
+   emotion_data_v2$emotions_yesterday_4[emotion_data_v2$emotions_yesterday_4 == 2]<-0
+   emotion_data_v2$emotions_yesterday_5[emotion_data_v2$emotions_yesterday_5 == 2]<-0
+   emotion_data_v2$emotions_yesterday_6[emotion_data_v2$emotions_yesterday_6 == 2]<-0
+   emotion_data_v2$emotions_yesterday_7[emotion_data_v2$emotions_yesterday_7 == 2]<-0
+   emotion_data_v2$older<-"55 or older"
+   emotion_data_v2$older[emotion_data_v2$age<55]<-"30- 55"
+   emotion_data_v2$older[emotion_data_v2$age<30]<-"Under 30"
+     emotion_data_v2|> 
+  dplyr::rename("Enjoyment" = emotions_yesterday_1, "Physical_pain" = emotions_yesterday_2, "Worry" = emotions_yesterday_3, "Sadness" = emotions_yesterday_4 , "Stress" = emotions_yesterday_5,  "Anger" = emotions_yesterday_6, "Happiness" = emotions_yesterday_7)|>
+  ggplot(mapping = aes(x = Week, y = Sadness, group = older, color = older))+ 
+  stat_summary(geom="point", fun=mean)+
+  geom_smooth()+ 
+  geom_vline(xintercept = 20, linetype = "solid", color = "Purple", size = 0.5)+
+  geom_vline(xintercept = 30, linetype = "solid", color = "Purple", size = 0.5)+
+   geom_vline(xintercept = 64, linetype = "dotted", color = "red", size = 1)
+       
+```
+### My observation
++ People became sadder when the lockdown started.
++ The drop around week 45 is when the COVID Vaccine was announced
+
+## Happiness
+```{r}
+ emotion_data_v2|>
+  dplyr::rename("Enjoyment" = emotions_yesterday_1, "Physical_pain" = emotions_yesterday_2, "Worry" = emotions_yesterday_3, "Sadness" = emotions_yesterday_4 , "Stress" = emotions_yesterday_5,  "Anger" = emotions_yesterday_6, "Happiness" = emotions_yesterday_7)|>
+  ggplot(mapping = aes(x = Week, y = Happiness, group = older, color = older))+
+  stat_summary(geom="point", fun=mean)+
+  geom_smooth()+
+  geom_vline(xintercept = 20, linetype = "solid", color = "Purple", size = 0.5)+
+  geom_vline(xintercept = 30, linetype = "solid", color = "Purple", size = 0.5)+
+   geom_vline(xintercept = 64, linetype = "dotted", color = "red", size = 1)
+```
++ Happiness among people under 30 was pretty stable
++ When the lockdown started, the older 2 age groups became less happy
+
+## Enjoyment
+```{r}
+emotion_data_v2|>
+  dplyr::rename("Enjoyment" = emotions_yesterday_1, "Physical_pain" = emotions_yesterday_2, "Worry" = emotions_yesterday_3, "Sadness" = emotions_yesterday_4 , "Stress" = emotions_yesterday_5,  "Anger" = emotions_yesterday_6, "Happiness" = emotions_yesterday_7)|>
+  ggplot(mapping = aes(x = Week, y = Happiness, group = older, color = older))+
+  stat_summary(geom="point", fun=mean)+
+  geom_smooth()+
+  geom_vline(xintercept = 20, linetype = "solid", color = "Purple", size = 0.5)+
+  geom_vline(xintercept = 30, linetype = "solid", color = "Purple", size = 0.5)+
+   geom_vline(xintercept = 64, linetype = "dotted", color = "red", size = 1)
+```
+
+## Anger
+```{r}
+emotion_data_v2|>
+  dplyr::rename("Enjoyment" = emotions_yesterday_1, "Physical_pain" = emotions_yesterday_2, "Worry" = emotions_yesterday_3, "Sadness" = emotions_yesterday_4 , "Stress" = emotions_yesterday_5,  "Anger" = emotions_yesterday_6, "Happiness" = emotions_yesterday_7)|>
+  ggplot(mapping = aes(x = Week, y = Anger, group = older, color = older))+
+  stat_summary(geom="point", fun=mean)+
+  geom_smooth()+
+  geom_vline(xintercept = 20, linetype = "solid", color = "Purple", size = 0.5)+
+  geom_vline(xintercept = 30, linetype = "solid", color = "Purple", size = 0.5)+
+   geom_vline(xintercept = 64, linetype = "dotted", color = "red", size = 1)
+```
++ Younger people were angrier about the pandemic
+
+## Stress
+```{r}
+emotion_data_v2|>
+  dplyr::rename("Enjoyment" = emotions_yesterday_1, "Physical_pain" = emotions_yesterday_2, "Worry" = emotions_yesterday_3, "Sadness" = emotions_yesterday_4 , "Stress" = emotions_yesterday_5,  "Anger" = emotions_yesterday_6, "Happiness" = emotions_yesterday_7)|>
+  ggplot(mapping = aes(x = Week, y = Stress, group = older, color = older))+
+  stat_summary(geom="point", fun=mean)+
+  geom_smooth()+
+  geom_vline(xintercept = 20, linetype = "solid", color = "Purple", size = 0.5)+
+  geom_vline(xintercept = 30, linetype = "solid", color = "Purple", size = 0.5)+
+   geom_vline(xintercept = 64, linetype = "dotted", color = "red", size = 1)
+```
++ Younger people were more stressed
+
+## Worry
+```{r}
+emotion_data_v2|>
+  dplyr::rename("Enjoyment" = emotions_yesterday_1, "Physical_pain" = emotions_yesterday_2, "Worry" = emotions_yesterday_3, "Sadness" = emotions_yesterday_4 , "Stress" = emotions_yesterday_5,  "Anger" = emotions_yesterday_6, "Happiness" = emotions_yesterday_7)|>
+  ggplot(mapping = aes(x = Week, y = Worry, group = older, color = older))+
+  stat_summary(geom="point", fun=mean)+
+  geom_smooth()+
+  geom_vline(xintercept = 20, linetype = "solid", color = "Purple", size = 0.5)+
+  geom_vline(xintercept = 30, linetype = "solid", color = "Purple", size = 0.5)+
+   geom_vline(xintercept = 64, linetype = "dotted", color = "red", size = 1)
+```
++ People were the most worried during the lockdown
+
+## Physical pain
+```{r}
+emotion_data_v2|>
+  dplyr::rename("Enjoyment" = emotions_yesterday_1, "Physical_pain" = emotions_yesterday_2, "Worry" = emotions_yesterday_3, "Sadness" = emotions_yesterday_4 , "Stress" = emotions_yesterday_5,  "Anger" = emotions_yesterday_6, "Happiness" = emotions_yesterday_7)|>
+  ggplot(mapping = aes(x = Week, y = Physical_pain, group = older, color = older))+
+  stat_summary(geom="point", fun=mean)+
+  geom_smooth()+ 
+  geom_vline(xintercept = 20, linetype = "solid", color = "Purple", size = 0.5)+
+  geom_vline(xintercept = 30, linetype = "solid", color = "Purple", size = 0.5)+
+   geom_vline(xintercept = 64, linetype = "dotted", color = "red", size = 1)
+```
++  Physical pain did not change much over time.
+
+## Conclusions
++ COVID strongly affected people's emotions. 
++ People were more affected in the beginning of the pandemic than later when the death rate was higher.
++ Younger people's emotions were more affected.

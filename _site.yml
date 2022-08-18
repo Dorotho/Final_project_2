@@ -1,0 +1,14 @@
+name: "."
+title: "How COVID-19 pandemic changed emotions"
+description: |
+   People's emotions changed a lot in the begining of the pandemic, later on, people's emotions seem more stabel.
+output_dir: "docs"
+navbar:
+  right:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+    - text: "Source"
+      href: source.html
+output: distill::distill_article

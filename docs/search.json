@@ -6,14 +6,14 @@
       "description": "My final project for Kane’s Free High School Data Science Bootcamp",
       "author": [],
       "contents": "\nAbout me\nMy\nname is Yaqi Tang. I am a international student from\nChina. I’ve been here 4 years already!\nSchool: Marquette Academy\nHigh School\nAbout this project\nHow COVID-19\npandemic changed emotions.\nThere are 7 different\nemotions\nSadness\nHappiness\nPhysical pain\nAnger\nStress\nWorry\nEnjoyment\nˆ\n\n\n\n",
-      "last_modified": "2022-08-18T12:31:42-05:00"
+      "last_modified": "2022-08-18T20:10:45-05:00"
     },
     {
       "path": "index.html",
       "title": "How COVID-19 pandemic changed emotions",
       "author": [],
       "contents": "\nA\nsurvey measured people’s feelings, on 7 different emotions, during the\nCOVID-19 pandemic in the U.S. How did people’s feelings change during\ndifferent periods of time?\nDetails to help\nyou to understand the graphs\nWeek 1: mid-November, 2019\nPurple line 1: Week 20 – The beginning of the lockdown\nPurple line 2: Week 30 – The end of the lockdown\nRed line: Peak of COVID deaths\nSadness\n\n\n\nMy observation\nPeople became sadder when the lockdown started.\nThe drop around week 45 is when the COVID Vaccine was announced\nHappiness\n\n\n\nHappiness among people under 30 was pretty stable\nWhen the lockdown started, the older 2 age groups became less\nhappy\nEnjoyment\n\n\n\nAnger\n\n\n\nYounger people were angrier about the pandemic\nStress\n\n\n\nYounger people were more stressed\nWorry\n\n\n\nPeople were the most worried during the lockdown\nPhysical pain\n\n\n\nPhysical pain did not change much over time.\nConclusions\nCOVID strongly affected people’s emotions.\nPeople were more affected in the beginning of the pandemic than\nlater when the death rate was higher.\nYounger people’s emotions were more affected.\n\n\n\n",
-      "last_modified": "2022-08-18T12:32:12-05:00"
+      "last_modified": "2022-08-18T20:11:15-05:00"
     },
     {
       "path": "sources.html",
@@ -26,7 +26,7 @@
       ],
       "date": "`r Sys.Date()`",
       "contents": "\n\n\n\n",
-      "last_modified": "2022-08-18T12:32:13-05:00"
+      "last_modified": "2022-08-18T20:11:17-05:00"
     }
   ],
   "collections": []
